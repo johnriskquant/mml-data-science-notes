@@ -20,13 +20,18 @@ $$y = w_1x_1 + w_2x_2 + \dots + w_nx_n + b$$
 *   **Practical Context:** In credit decisioning, $x_1$ might represent revolving credit utilization, $x_2$ represents debt-to-income ratio, and $y$ represents the final predicted credit limit. 
 
 ### 3. The Full Dataset as a System of Equations
+
 A dataset contains $m$ rows (observations). To train the model, we apply the equation across every single row $(i)$, creating a large system of linear equations:
-$$\begin{aligned}
+
+$$
+\begin{aligned}
 y^{(1)} &= w_1x_1^{(1)} + w_2x_2^{(1)} + \dots + w_nx_n^{(1)} + b \\
 y^{(2)} &= w_1x_1^{(2)} + w_2x_2^{(2)} + \dots + w_nx_n^{(2)} + b \\
 &\vdots \\
 y^{(m)} &= w_1x_1^{(m)} + w_2x_2^{(m)} + \dots + w_nx_n^{(m)} + b
-\end{aligned}$$
+\end{aligned}
+$$
+
 
 ### 4. The Linear Algebra Solution
 Instead of solving $m$ individual equations algebraically, we translate the entire dataset into a matrix format. Linear algebra provides the mathematical framework to process this massive system simultaneously, allowing the algorithm to compute the optimal vector of weights ($w_1 \dots w_n$) that minimizes the prediction error across all $m$ applicants.
