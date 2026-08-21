@@ -82,3 +82,37 @@ $$
 By setting the constants (the outcome vector $\mathbf{b}$) to zero, we strip away the specific "translation" of the system in space. This allows us to study the pure geometric relationship between the variables. 
 * If a homogeneous system is non-singular, its only solution is the origin: $\mathbf{x} = \mathbf{0}$. 
 * If it is singular (redundant), it contains lines or planes of solutions passing through the origin (known in data science as the **null space**).
+
+
+## 8. Linear Dependence, Determinants, and Matrix Shape
+
+The concepts of redundancy and linear dependence apply to **all** matrices. However, the mathematical tools used to identify them depend on the shape of the matrix.
+
+### The Square Matrix: Determinants & Singularity
+The terms **Singular** and **Non-Singular**, as well as the **Determinant**, are strictly defined only for **square matrices** ($n \times n$). 
+
+*   **Why?** Geometrically, a determinant measures how a matrix scales an object's area or volume when transforming space (e.g., mapping 3D space to 3D space). You cannot calculate a single "volume scaling factor" when mapping from 2D space into 5D space.
+*   **The Rule:** For a square matrix $A$:
+    *   If rows/columns are linearly dependent (redundant) $\rightarrow \det(A) = 0 \rightarrow$ Singular.
+    *   If rows/columns are linearly independent $\rightarrow \det(A) \neq 0 \rightarrow$ Non-Singular.
+
+### The Rectangular Matrix: Rank
+Real-world datasets are almost never square. They are **rectangular matrices** ($m \times n$), where $m$ is the number of observations (rows) and $n$ is the number of features (columns). 
+
+For rectangular matrices, we cannot compute a determinant. Instead, we measure linear dependence using **Rank**.
+*   **The Rule:** A rectangular matrix cannot have a rank higher than its smallest dimension ($\min(m, n)$).
+*   **The "Too Many Sentences" Rule:** If you have a $50000 \times 15$ matrix (50,000 loan applicants, 15 credit risk features), you have 50,000 "sentences" but only 15 variables. You are mathematically guaranteed to have massive linear dependence among the rows. 
+
+### 9. The Data Science Bridge: Why Determinants Still Matter
+
+Even though the raw dataset $X$ is a rectangular $m \times n$ matrix, determinants are still a massive part of machine learning. 
+
+When training a linear algorithm (like Ordinary Least Squares), the algorithm doesn't invert the raw dataset. It multiplies the dataset by its own transpose to create a **Covariance Matrix**:
+
+$$
+X^T X
+$$
+
+No matter what shape $X$ is, the resulting matrix $X^T X$ is **always a perfect square** ($n \times n$). 
+*   If your credit features (columns) are linearly independent, $X^T X$ is non-singular, its determinant is non-zero, and the model trains perfectly.
+*   If two credit features are linearly dependent (e.g., calculating debt-to-income twice in slightly different ways), $X^T X$ becomes singular, its determinant becomes $0$, and the model crashes because the matrix cannot be inverted.
