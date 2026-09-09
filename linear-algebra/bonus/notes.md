@@ -57,6 +57,14 @@ $$A = U \Sigma V^T$$
 *   **$\Sigma$ (Sigma)**: The diagonal matrix of singular values (the stretching power/standard deviation).
 *   **$U$**: The output rotation (maps those themes to your individual samples).
 
+
+
+### Why do data scientists and ML engineers care so much about these underlying mechanics?
+
+*   **Computational Stability in Model Development:** Calculating $A^T A$ to find covariance can cause massive floating-point precision errors on large datasets (computers struggle with squaring tiny fra>
+*   **Automated Signal Extraction:** In machine learning, raw datasets are full of noise. The singular values in the $\Sigma$ matrix are explicitly tied to the standard deviation of the data. SVD acts as>
+*   **Dimensionality Reduction:** By keeping only the top few vectors in $U$, $\Sigma$, and $V^T$ (the ones with the highest variance) and dropping the rest, you can compress a massive dataset while reta>
+
 ---
 
 ## 3. NumPy Numerical Examples
@@ -108,9 +116,3 @@ _, eigenvectors_SD = np.linalg.eig(cov_matrix)
 print("\nSVD V-Transpose:\n", np.abs(np.round(VT, 4)))
 print("Covariance Eigenvectors (Transposed):\n", np.abs(np.round(eigenvectors_SD.T, 4)))
 
-
-### Why do data scientists and ML engineers care so much about these underlying mechanics?
-
-*   **Computational Stability in Model Development:** Calculating $A^T A$ to find covariance can cause massive floating-point precision errors on large datasets (computers struggle with squaring tiny fractions). SVD bypasses this entirely. By finding the singular values directly from the raw $X$ matrix, SVD serves as a numerically stable, bulletproof engine for algorithms like PCA, making it standard practice in robust data engineering pipelines.
-*   **Automated Signal Extraction:** In machine learning, raw datasets are full of noise. The singular values in the $\Sigma$ matrix are explicitly tied to the standard deviation of the data. SVD acts as an automated filter that ranks hidden features by their volatility, allowing models to identify the absolute strongest statistical signals while ignoring flat, useless data.
-*   **Dimensionality Reduction:** By keeping only the top few vectors in $U$, $\Sigma$, and $V^T$ (the ones with the highest variance) and dropping the rest, you can compress a massive dataset while retaining 99% of its descriptive power. This is the foundation of image compression, recommendation engines, and preventing overfitting in quantitative predictive models.
