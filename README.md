@@ -14,9 +14,9 @@ This repository documents my mathematical upskilling as I transition my career f
 * [Bonus: Spectral Decomposition and SVD Mechanics](./linear-algebra/bonus)
 
 **Course 2: Calculus for Machine Learning (In Progress)**
-* [Week 1: Derivatives and Optimization](.calculus/week-1-derivatives-and-optimization)
-* [Week 2: Gradients and Gradient Descent](.calculus/week-2-gradients-and-gradient-descent)
-* [Week 3: (Optimization in Neural Networks and Newton's Method)](.calculus/week-3-optimization-in-neural-networks)
+* [Week 1: Derivatives and Optimization](./calculus/week-1-derivatives-and-optimization)
+* [Week 2: Gradients and Gradient Descent](./calculus/week-2-gradients-and-gradient-descent)
+* [Week 3: Optimization in Neural Networks and Newton's Method](./calculus/week-3-optimization-in-neural-networks)
 
 **Course 3: Probability & Statistics (Coming Soon)**
 
