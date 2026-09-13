@@ -1,4 +1,3 @@
-## 1. The Derivative: Foundations & Limits
 *   **Instantaneous Rate of Change:** In 2D, this is the limit of $\frac{\Delta y}{\Delta x}$ as $\Delta x \to 0$, giving $\frac{dy}{dx}$. In higher dimensions, this expands into the **Gradient** (a vector of partial derivatives pointing to the steepest ascent) or the **Jacobian** matrix.
 *   **Notation:** **Leibniz** ($\frac{dy}{dx}$) explicitly names the variables, which is highly useful for tracking units and applying the chain rule. **Lagrange** ($f'(x)$) is much faster to write and highlights the function itself.
 *   **Non-Differentiable Points:** A derivative requires a smooth, continuous curve. It fails at **Corners/Cusps** (e.g., $f(x) = |x|$ at $x=0$, where left and right slopes clash), **Jump Discontinuities** (a literal break in the graph), and **Vertical Tangents** (where the slope becomes infinite, like $f(x) = \sqrt[3]{x}$ at $x=0$).
